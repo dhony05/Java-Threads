@@ -14,6 +14,7 @@ public class Example {
 				
 				for (int i = 1; i <= 200; i++) {
 					newCounter.increment();
+					//System.out.println(newCounter.count);
 				}
 				
 			}
@@ -25,19 +26,22 @@ public class Example {
 		
 		for (int i = 1; i <= 200; i++) {
 			newCounter.increment();
+			System.out.println(newCounter.count);
 		}
 		
 	}
 		});
 			
 		
-		t1.start(); 
+		t1.start();
 		t2.start();
+		
 		
 		t1.join();
 		t2.join();
 		
-		System.out.println(newCounter.count);
+		System.out.println(t1.currentThread());
+		System.out.println(t2.currentThread());
 
 	}
 	
@@ -47,11 +51,13 @@ public class Example {
 }
 
 
- class Counter
+ class Counter  
 {
 	AtomicInteger count = new AtomicInteger();
 	
 	public void increment() {
 		count.incrementAndGet();
 	}
+
+	
 }
